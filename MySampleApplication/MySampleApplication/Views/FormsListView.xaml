@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MySampleApplication.FormsListView">
+    <ContentPage.Content>
+        <ListView  x:Name="myList" RowHeight="130">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" BackgroundColor="AntiqueWhite">
+                            <StackLayout>
+                                <Label 
+                                    Text = "{Binding title}" 
+                                    FontSize="24" 
+                                    TextColor="Crimson" 
+                                    HorizontalOptions="Center" 
+                                    VerticalOptions="Center"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HeightRequest="200">
+                                <Label 
+                                    Text = "{Binding description}" 
+                                    HorizontalOptions="Start" 
+                                    VerticalOptions="Start" 
+                                    TextColor="Black"/>
+                                <Image 
+                                    Source="{Binding imageHref}" 
+                                    HorizontalOptions="EndAndExpand"  
+                                    VerticalOptions="Start" 
+                                    WidthRequest="75" 
+                                    HeightRequest="75"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
