@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Net.Http;
+using FFImageLoading.Forms;
 
 namespace MySampleApplication
 {
@@ -37,12 +38,17 @@ namespace MySampleApplication
 
         protected async void OnGetListDetails()
         {
+
+            CachedImage ffImage = this.FindByName<CachedImage>("ffImage");
             var tr = await DoWorkAsync();
             ObservableCollection<rowdetails> listItems = new ObservableCollection<rowdetails>();
             foreach (var item in myItems.rows)
             {
+                if (item.imageHref == null)
+                    item.imageHref = "error.png";
                 if (item.title != null)
                     listItems.Add(item);
+
             }
             myList.ItemsSource = listItems;
             int itemCount = listItems.Count;

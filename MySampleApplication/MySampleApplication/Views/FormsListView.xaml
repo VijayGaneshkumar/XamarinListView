@@ -28,6 +28,8 @@
                                     x:Name="ffImage"
                                     HorizontalOptions="EndAndExpand" 
                                     VerticalOptions="End"
+                                    LoadingPlaceholder="download.png" 
+                                    CacheDuration="1"
                                     Source="{Binding imageHref}"
                                     ErrorPlaceholder="error.png"
 			                        WidthRequest="75" 
