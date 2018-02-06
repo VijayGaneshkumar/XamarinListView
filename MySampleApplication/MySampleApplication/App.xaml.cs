@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*** 
+ * Filename: App.xaml.cs
+ * Description: App Page to handle the states of application life cycle
+ * Author : Vijay Ganeshkumar
+ ***/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +18,6 @@ namespace MySampleApplication
 		public App ()
 		{
 			InitializeComponent();
-
             MainPage = new NavigationPage();
             MainPage.Navigation.PushAsync(new FormsListView());
         }

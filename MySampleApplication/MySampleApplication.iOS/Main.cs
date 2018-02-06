@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*** 
+ * Filename: MySampleViewModel.cs
+ * Description: iOS lauch page.
+ * Author : Vijay Ganeshkumar
+ ***/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 

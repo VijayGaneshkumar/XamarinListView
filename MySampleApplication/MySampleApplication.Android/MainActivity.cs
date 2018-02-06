@@ -1,5 +1,10 @@
-﻿using System;
-
+﻿/*** 
+ * Filename: MySampleViewModel.cs
+ * Description: Android lauch page.
+ * Author : Vijay Ganeshkumar
+ ***/
+ 
+using System;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;

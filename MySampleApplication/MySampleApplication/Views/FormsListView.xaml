@@ -3,44 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             x:Class="MySampleApplication.FormsListView">
+             x:Class="MySampleApplication.FormsListView"
+             Title="{Binding  myItems.title}" >
     <ContentPage.Content>
-        <ListView  x:Name="myList" RowHeight="130">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Vertical" BackgroundColor="AntiqueWhite">
-                            <StackLayout>
-                                <Label 
-                                    Text = "{Binding title}" 
-                                    FontSize="24" 
-                                    TextColor="Crimson" 
-                                    HorizontalOptions="Center" 
-                                    VerticalOptions="Center"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal" HeightRequest="200">
-                                <Label 
-                                    Text = "{Binding description}" 
-                                    HorizontalOptions="Start" 
-                                    VerticalOptions="Start" 
-                                    TextColor="Black"/>
-                                <ffimageloading:CachedImage 
-                                    x:Name="ffImage"
-                                    HorizontalOptions="EndAndExpand" 
-                                    VerticalOptions="End"
-                                    LoadingPlaceholder="download.png" 
-                                    CacheDuration="1"
-                                    Source="{Binding imageHref}"
-                                    ErrorPlaceholder="error.png"
-			                        WidthRequest="75" 
-                                    HeightRequest="75"
-			                        DownsampleToViewSize="true">   
-                                </ffimageloading:CachedImage>
-                            </StackLayout>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" BackgroundColor="AntiqueWhite">
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" BackgroundColor="AntiqueWhite">
+                <ListView  x:Name="myList" RowHeight="130" ItemsSource="{Binding myItems.rows}" VerticalOptions="FillAndExpand" Margin="2,0,2,0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" BackgroundColor="AntiqueWhite">
+                                    <StackLayout>
+                                        <Label 
+                                            Text = "{Binding title}" 
+                                            FontSize="24" 
+                                            TextColor="Crimson" 
+                                            HorizontalOptions="Center" 
+                                            VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HeightRequest="200">
+                                        <Label 
+                                            Text = "{Binding description}" 
+                                            HorizontalOptions="Start" 
+                                            VerticalOptions="Start" 
+                                            TextColor="Black"/>
+                                    <ffimageloading:CachedImage 
+                                            x:Name="ffImage"
+                                            HorizontalOptions="EndAndExpand" 
+                                            VerticalOptions="Start"
+                                            LoadingPlaceholder="download.png" 
+                                            CacheDuration="1"
+                                            Source="{Binding imageHref}"
+                                            ErrorPlaceholder="error.png"
+			                                WidthRequest="75" 
+                                            HeightRequest="75"
+			                                DownsampleToViewSize="true"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+             </ListView>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"  HeightRequest="60" Margin="2,0,2,0">
+                <Button
+                     x:Name="Refresh"
+                    Command="{Binding RefreshCommand}"
+                     Text="Refresh"
+                     HorizontalOptions="Start"
+                     VerticalOptions="End"/>
+                <Button
+                     x:Name="Sort"
+                    Command="{Binding SortCommand}"
+                     Text="Sort"
+                     HorizontalOptions="EndAndExpand"
+                     VerticalOptions="End"/>
+           
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
