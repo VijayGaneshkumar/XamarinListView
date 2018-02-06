@@ -1,14 +1,9 @@
 ﻿/*** 
- * Filename: MySampleViewModel.cs
- * Description: iOS lauch page.
+ * Filename: Main.cs
+ * Description: iOS launch page.
  * Author : Vijay Ganeshkumar
  ***/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
 using UIKit;
 
 namespace MySampleApplication.iOS

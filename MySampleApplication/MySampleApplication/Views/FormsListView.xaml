@@ -4,9 +4,15 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="MySampleApplication.FormsListView"
-             Title="{Binding  myItems.title}" >
+             Title="{Binding  myItems.title}"
+             >
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" BackgroundColor="AntiqueWhite">
+            <ActivityIndicator 
+                IsVisible="{Binding IsBusy}" 
+                IsRunning="{Binding IsBusy}"  
+                Color="Red" 
+             />
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" BackgroundColor="AntiqueWhite">
                 <ListView  x:Name="myList" RowHeight="130" ItemsSource="{Binding myItems.rows}" VerticalOptions="FillAndExpand" Margin="2,0,2,0">
                     <ListView.ItemTemplate>
@@ -48,17 +54,18 @@
             <StackLayout Orientation="Horizontal"  HeightRequest="60" Margin="2,0,2,0">
                 <Button
                      x:Name="Refresh"
-                    Command="{Binding RefreshCommand}"
+                     Command="{Binding RefreshCommand}"
+                     IsEnabled="{Binding isEnabled}"
                      Text="Refresh"
                      HorizontalOptions="Start"
                      VerticalOptions="End"/>
                 <Button
                      x:Name="Sort"
-                    Command="{Binding SortCommand}"
+                     Command="{Binding SortCommand}"
+                     IsEnabled="{Binding isEnabled}"
                      Text="Sort"
                      HorizontalOptions="EndAndExpand"
                      VerticalOptions="End"/>
-           
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

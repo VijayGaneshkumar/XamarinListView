@@ -4,11 +4,7 @@
  * Author : Vijay Ganeshkumar
  ***/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+using Plugin.Connectivity;
 using Xamarin.Forms;
 
 namespace MySampleApplication
@@ -17,7 +13,7 @@ namespace MySampleApplication
 	{
 		public App ()
 		{
-			InitializeComponent();
+            InitializeComponent();
             MainPage = new NavigationPage();
             MainPage.Navigation.PushAsync(new FormsListView());
         }

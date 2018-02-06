@@ -1,17 +1,18 @@
 ﻿/*** 
- * Filename: MySampleViewModel.cs
- * Description: Android lauch page.
+ * Filename: MainActivity.cs
+ * Description: Android lanuch page.
+ * Utilities :
+ * ACR.UserDialogs for displaying alert messasges.
  * Author : Vijay Ganeshkumar
  ***/
  
-using System;
+
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using Android.OS;
 using FFImageLoading.Forms.Droid;
+using Acr.UserDialogs;
 
 namespace MySampleApplication.Droid
 {
@@ -27,6 +28,7 @@ namespace MySampleApplication.Droid
             base.OnCreate(bundle);
             CachedImageRenderer.Init(enableFastRenderer: true);
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            UserDialogs.Init(this);
             LoadApplication(new App());
         }
     }
