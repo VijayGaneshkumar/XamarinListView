@@ -14,8 +14,7 @@ namespace MySampleApplication
 		public App ()
 		{
             InitializeComponent();
-            MainPage = new NavigationPage();
-            MainPage.Navigation.PushAsync(new FormsListView());
+            MainPage = new NavigationPage(new FormsListView());
         }
 
 		protected override void OnStart ()

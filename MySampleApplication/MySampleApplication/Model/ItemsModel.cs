@@ -4,6 +4,7 @@
  * Author : Vijay Ganeshkumar
  ***/
 
+using MySampleApplication.ViewModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -18,7 +19,7 @@ namespace MySampleApplication
 
         public string imageHref { get; set; }
     }
-    public class ItemsModel : INotifyPropertyChanged
+    public class ItemsModel : BaseNotify
     {
         private string _title;
 
@@ -28,11 +29,5 @@ namespace MySampleApplication
 
         public ObservableCollection<rowdetails> rows { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿/*** 
- * Filename: MySampleViewModel.cs
+ * Filename: ListViewModel.cs
  * Description: Handles the download of json data and 
  * command handling from the page.
  * Utilities : 
@@ -13,16 +13,15 @@ using Acr.UserDialogs;
 using Plugin.Connectivity;
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace MySampleApplication
+namespace MySampleApplication.ViewModel
 {
-    public class MySampleViewModel : INotifyPropertyChanged
+    public class ListViewModel : BaseNotify
     {
         private const string jsonUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json";
         static int count = 0;
@@ -52,7 +51,6 @@ namespace MySampleApplication
             }
         }
                 
-        public event PropertyChangedEventHandler PropertyChanged;
         private ItemsModel _myItems = new ItemsModel();
                 public ItemsModel myItems
         {
@@ -66,33 +64,34 @@ namespace MySampleApplication
                 OnPropertyChanged("myItems");
             }
         }
-
-        protected virtual void OnPropertyChanged(string propName)
-        {
-             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
-
-        public MySampleViewModel()
+        
+        public ListViewModel()
         {                    
-            DoWorkAsync();               
+            DoWorkAsync();
+
+            #region handle sort click
             SortCommand = new Command(() =>
             {
                 count++;
                 Console.WriteLine("Sort Clicked");
                 if(count%2 == 0)
-                    myItems.rows = new ObservableCollection<rowdetails>(myItems.rows.OrderBy(x => x.title).ToList());
+                    myItems.rows = new ObservableCollection<rowdetails>(myItems.rows.OrderBy(x => x.title));
                 else
-                    myItems.rows = new ObservableCollection<rowdetails>(myItems.rows.OrderByDescending(x => x.title).ToList());
+                    myItems.rows = new ObservableCollection<rowdetails>(myItems.rows.OrderByDescending(x => x.title));
                 OnPropertyChanged("myItems");
             });
+            #endregion
+
+            #region handle Refresh click
             RefreshCommand = new Command(() =>
             {
                 Console.WriteLine("Refresh Clicked");
                 myItems.rows.Clear();
                 DoWorkAsync();
             });
+            #endregion
         }
-
+        #region Load Json
         private void DoWorkAsync()
         {
             //check and probhibit the json data fetch when no data connectivity is present.
@@ -112,8 +111,6 @@ namespace MySampleApplication
                         String content = await _client.GetStringAsync(jsonUrl);
                         myItems = JsonConvert.DeserializeObject<ItemsModel>(content, settings);
                         IsBusy = false;
-                         //ToDo: null value rjection setting is not handling as expected.
-                         // workaround to remove when all 3 fields are null.
                         foreach (var nItem in myItems.rows)
                         {
                             if (nItem.title == null && nItem.description == null && nItem.imageHref == null)
@@ -132,6 +129,7 @@ namespace MySampleApplication
                 UserDialogs.Instance.Alert("Alert", "Please enable data conenctivity to begin", "OK");
             }
         }
+        #endregion
     }
 }
 

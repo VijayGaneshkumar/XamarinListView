@@ -8,13 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
-using Newtonsoft.Json;
+/*** 
+ * Filename: FormsListView.xaml.cs
+ * Description: Listview for application
+ * Author : Vijay Ganeshkumar
+ ***/
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Net.Http;
-using FFImageLoading.Forms;
+
 
 namespace MySampleApplication
 {
@@ -24,8 +25,6 @@ namespace MySampleApplication
         public FormsListView ()
 		{
 			InitializeComponent();
-            MySampleViewModel myViewmModel = new MySampleViewModel();
-            this.BindingContext = myViewmModel;
         }
     }
 }
