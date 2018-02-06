@@ -73,8 +73,7 @@ namespace MySampleApplication
         }
 
         public MySampleViewModel()
-        {          
-            
+        {                    
             DoWorkAsync();               
             SortCommand = new Command(() =>
             {
@@ -115,10 +114,10 @@ namespace MySampleApplication
                         IsBusy = false;
                          //ToDo: null value rjection setting is not handling as expected.
                          // workaround to remove when all 3 fields are null.
-                        foreach (var yItems in myItems.rows)
+                        foreach (var nItem in myItems.rows)
                         {
-                            if (yItems.title == null && yItems.description == null && yItems.imageHref == null)
-                                myItems.rows.Remove(yItems);
+                            if (nItem.title == null && nItem.description == null && nItem.imageHref == null)
+                                myItems.rows.Remove(nItem);
                         }
                     });
                 }
